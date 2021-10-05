@@ -19,7 +19,7 @@ class Counter extends Component {
     return (
       <main>
         <button onClick={this.addPoint}>Добавить</button>
-        <div></div>
+        <div>{this.state.countNumber}</div>
       </main>
     );
   }
