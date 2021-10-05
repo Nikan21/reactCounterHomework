@@ -10,9 +10,8 @@ class Counter extends Component {
 
   addPoint = () => {
     this.setState((prevState) => ({
-      countNumber: prevState.countNumber + 1,
+      countNumber: prevState.countNumber + this.props.step,
     }));
-    console.log(this.state.countNumber);
   };
 
   render() {
