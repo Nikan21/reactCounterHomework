@@ -33,6 +33,10 @@ class Counter extends Component {
     });
   };
 
+  autoClick = () => {
+    setInterval(this.addPoint, 1000);
+  };
+
   render() {
     return (
       <main>
@@ -42,6 +46,9 @@ class Counter extends Component {
           <button onClick={this.changeSymbolPlus}>Plus</button>
         </span>
         <div>{this.state.countNumber}</div>
+        <div>
+          <button onClick={this.autoClick}>AutoClick</button>
+        </div>
       </main>
     );
   }
