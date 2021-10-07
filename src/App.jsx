@@ -8,15 +8,31 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      step: 1
-    }
+      step: 1,
+    };
   }
+
+  handleChange = (event) => {
+    const {
+      target: { value: step },
+    } = event;
+
+    this.setState({ step: Number(step) });
+  };
 
   render() {
     return (
       <div>
         <div className="App">
-          <Counter step = {this.state.step}/>
+          <Counter step={this.state.step} />
+          <div>
+            <input
+              type="range"
+              name="step"
+              value={this.step}
+              onChange={this.handleChange}
+            />
+          </div>
         </div>
       </div>
     );
