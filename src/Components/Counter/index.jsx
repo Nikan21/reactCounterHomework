@@ -7,6 +7,8 @@ class Counter extends Component {
       countNumber: 0,
       symbol: true,
     };
+    
+    this.autoClickID = null;
   }
 
   addPoint = () => {
@@ -34,15 +36,27 @@ class Counter extends Component {
   };
 
   autoClick = () => {
-    setInterval(this.addPoint, 1000);
+    if (this.autoClickID === null){
+      this.autoClickID = setInterval(this.addPoint, 1000)
+    }
   };
+
+  stopAutoClick = () =>{
+    clearInterval(this.autoClickID)
+  }
+
+  componentDidMount(){
+    this.autoClick()
+    setTimeout(this.stopAutoClick, 5000)
+  }
+
 
   render() {
     return (
       <main>
         <span>
           <button onClick={this.changeSymbolMinus}>Minus</button>
-          <button onClick={this.addPoint}>Добавить</button>
+          <button onClick={this.addPoint}>Клик {this.props.step}</button>
           <button onClick={this.changeSymbolPlus}>Plus</button>
         </span>
         <div>{this.state.countNumber}</div>
