@@ -9,7 +9,7 @@ class Counter extends Component {
     };
     
     this.autoClickID = null;
-    this.timerStop = 5000;
+    this.timerStop = 2000;
   }
 
   addPoint = () => {
@@ -37,26 +37,27 @@ class Counter extends Component {
   };
 
   autoClick = () => {
-    if (this.autoClickID === null){
+    if (this.autoClickID === null) { 
       this.autoClickID = setInterval(this.addPoint, 1000)
     }
   };
 
   stopAutoClick = () =>{
     clearInterval(this.autoClickID)
+    this.autoClickID = null
   }
 
-  componentDidMount(){
+/*   componentDidMount(){
     this.autoClick()
     setTimeout(this.stopAutoClick, this.timerStop)
-  }
+  } */
 
 
   render() {
     return (
       <>
       <header>
-        <h3>Автоклик прекратиться через: {this.timerStop/1000}s</h3>
+        <h3>Автоклик после запуска прекратиться через: {this.timerStop/1000}s</h3>
       </header>
       <main>
         <span>
@@ -67,6 +68,7 @@ class Counter extends Component {
         <div>{this.state.countNumber}</div>
         <div>
           <button onClick={this.autoClick}>AutoClick</button>
+          <button onClick={this.stopAutoClick}>Stop AutoClick</button>
         </div>
       </main>
       </>
